@@ -1,0 +1,9 @@
+forwardedPrefix: "/id-card-generator/"
+
+resources:
+  requests:
+    cpu: 5m
+    memory: 5Mi
+  limits:
+    cpu: 50m
+    memory: 50Mi

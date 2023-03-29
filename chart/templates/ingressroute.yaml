@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: id-card-generator-route
+  namespace: id-card-generator
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`patrickscheid.de`) && (Path(`{{ trimSuffix "/" .Values.forwardedPrefix }}`) || PathPrefix(`{{ trimSuffix "/" .Values.forwardedPrefix }}/`))
+      kind: Rule
+      services:
+        - name: id-card-generator
+          port: 80
+  tls:
+    secretName: patrickscheid.de-cert-secret

@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        @apply font-mono text-gray-700
+    }
+}
+
+@layer components {
+    label {
+        @apply block text-sm font-bold mb-2;
+    }
+
+    fieldset {
+        @apply pb-4;
+    }
+
+    button {
+        @apply p-2 ring-2 ring-slate-200 shadow-sm rounded-md;
+    }
+
+    input, select {
+        @apply block w-full p-2 ring-2 ring-slate-200 shadow-sm rounded-md;
+    }
+}
+
+@layer components {
+    .checkbox {
+        @apply text-center;
+    }
+
+    .checkbox > input {
+        @apply inline max-w-max ring-0;
+    }
+
+    .checkbox > label {
+        @apply font-bold pl-2 inline align-text-bottom;
+    }
+}

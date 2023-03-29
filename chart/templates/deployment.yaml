@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: id-card-generator
+  labels:
+    app: id-card-generator
+spec:
+  selector:
+    matchLabels:
+      app: id-card-generator
+  replicas: {{ .Values.replicas }}
+  template:
+    metadata:
+      name: id-card-generator
+      labels:
+        app: id-card-generator
+    spec:
+      imagePullSecrets:
+        - name: dockerconfigjson-github-com
+      containers:
+        - name: id-card-generator
+          image: "ghcr.io/pscheid92/id-card-generator:{{ required "Set valid .Values.imageVersion entry!" .Values.imageVersion }}"
+          imagePullPolicy: Always
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.forwardedPrefix }}
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 5

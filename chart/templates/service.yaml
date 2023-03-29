@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: id-card-generator
+spec:
+  selector:
+    app: id-card-generator
+  ports:
+    - port: 80
+  type: ClusterIP

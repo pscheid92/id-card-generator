@@ -1,0 +1,8 @@
+apiVersion: v2
+type: application
+
+name: id-card-generator
+description: Generate different kinds of ID cards.
+
+version: 0.1.0
+appVersion: "prototype"
